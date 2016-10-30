@@ -1,0 +1,265 @@
+{
+    "vertices": [
+        {"vhot": {"input": true, "p": 0}},
+        {"hot": {"input": true, "p": 0}},
+        {"heat": {"input": true, "p": 0}},
+        {"cool": {"input": true, "p": 0}},
+        {"efrosts": {"input": true, "p": 1}},
+        {"cold": {"input": true, "p": 0}},
+        {"vcold": {"input": true, "p": 0}},
+
+        {"rainfall": {"input": true, "p": 0}},
+        {"rain": {"input": true, "p": 1}},
+        {"snow": {"input": true, "p": 0}},
+        {"snowfall": {"input": true, "p": 0}},
+
+        {"calm": {"input": true, "p": 1}},
+        {"wind": {"input": true, "p": 0}},
+        {"heighwind": {"input": true, "p": 0}},
+
+        {"university": {"input": true, "p": 1}},
+        {"official": {"input": true, "p": 0}},
+        {"vk": {"input": true, "p": 0}},
+        {"sport": {"input": true, "p": 0}},
+
+
+        {
+            "winw": {
+                "weights": [0.5, 0.7, 1],
+                "ref": ["efrosts", "cold", "vcold"],
+                "p": null
+            }
+        },
+        {
+            "autw": {
+                "weights": [0.5, 0.7, 0.8],
+                "ref": ["heat", "cool", "efrosts"],
+                "p": null
+            }
+        },
+        {
+            "samw": {
+                "weights": [0.8, 0.7, 0.5],
+                "ref": ["vhot", "hot", "heat"],
+                "p": null
+            }
+        },
+        {
+            "wproof": {
+                "weights": [0.9,0.7,0.4,0.5],
+                "ref": ["rainfall", "rain", "snow", "snowfall"],
+                "p": null
+            }
+        },
+        {
+            "winddefence": {
+                "weights": [0.15,0.5,0.8],
+                "ref": ["calm", "wind", "heighwind"],
+                "p": null
+            }
+        },
+
+        {
+            "samwt": {
+                "weights": [1],
+                "ref": ["samw"],
+                "p": null
+            }
+        },
+        {
+            "autwt": {
+                "weights": [1],
+                "ref": ["autw"],
+                "p": null
+            }
+        },
+        {
+            "winwt": {
+                "weights": [1],
+                "ref": ["winw"],
+                "p": null
+            }
+        },
+        {
+            "samwb": {
+                "weights": [1],
+                "ref": ["samw"],
+                "p": null
+            }
+        },
+        {
+            "autwb": {
+                "weights": [1],
+                "ref": ["autw"],
+                "p": null
+            }
+        },
+        {
+            "winwb": {
+                "weights": [1],
+                "ref": ["winw"],
+                "p": null
+            }
+        },
+        {
+            "wprooffw": {
+                "weights": [1],
+                "ref": ["wproof"],
+                "p": null
+            }
+        },
+
+        {
+            "singlet": {
+                "output": true,
+                "weights": [0.6, 1],
+                "ref": ["samwt", "winwt"],
+                "p": null
+            }
+        },
+        {
+            "tshirt": {
+                "output": true,
+                "weights": [0.8, 1, 1, 1],
+                "ref": ["samwt", "autwt", "winwt","sport"],
+                "p": null
+            }
+        },
+        {
+            "shirt": {
+                "output": true,
+                "weights": [0.8, 1, 1, 1],
+                "ref": ["samwt", "official", "autwt", "winwt"],
+                "p": null
+            }
+        },
+        {
+            "cardigan": {
+                "output": true,
+                "weights": [1],
+                "ref": ["autwt&winddefence"],
+                "p": null
+            }
+        },
+        {
+            "windcheater": {
+                "output": true,
+                "weights": [1, 1, 1],
+                "ref": ["wproof&samwt", "winddefence&samwt", "sport"],
+                "p": null
+            }
+        },
+        {
+            "jacket": {
+                "output": true,
+                "weights": [1, 1, 1],
+                "ref": ["autwt&wproof", "sport", "autwt&winddefence"],
+                "p": null
+            }
+        },
+        {
+            "coat": {
+                "output": true,
+                "weights": [1, 1, 1],
+                "ref": ["autwt&winddefence", "autwt&official", "winwt&official"],
+                "p": null
+            }
+        },
+        {
+            "wjacket": {
+                "output": true,
+                "weights": [1, 1],
+                "ref": ["winwt&winddefence", "winwt&wproof"],
+                "p": null
+            }
+        },
+        {
+            "scarf": {
+                "output": true,
+                "weights": [1, 1],
+                "ref": ["winwt", "autwt&winddefence"],
+                "p": null
+            }
+        },
+        {
+            "shorts": {
+                "output": true,
+                "weights": [0.8],
+                "ref": ["samwb"],
+                "p": null
+            }
+        },
+        {
+            "jeans": {
+                "output": true,
+                "weights": [0.5, 0.8, 0.8, 1],
+                "ref": ["samwb", "winwb", "autwb", "university"],
+                "p": null
+            }
+        },
+        {
+            "underpants": {
+                "output": true,
+                "weights": [1, 0.5],
+                "ref": ["winwb", "autwt"],
+                "p": null
+            }
+        },
+        {
+            "sweatpants": {
+                "output": true,
+                "weights": [0.5, 0.4, 0.5, 1],
+                "ref": ["samwb", "autwb", "winwb", "sport"],
+                "p": null
+            }
+        },
+        {
+            "pants": {
+                "output": true,
+                "weights": [1],
+                "ref": ["official"],
+                "p": null
+            }
+        },
+        {
+            "shoes": {
+                "output": true,
+                "weights": [1, 1],
+                "ref": ["autwb&wprooffw", "autwb&official"],
+                "p": null
+            }
+        },
+        {
+            "sneakers": {
+                "output": true,
+                "weights": [0.5, 0.85, 1],
+                "ref": ["autwb", "samwb", "sport"],
+                "p": null
+            }
+        },
+        {
+            "winterboots": {
+                "output": true,
+                "weights": [1, 1],
+                "ref": ["winwb&official", "winwb&wprooffw"],
+                "p": null
+            }
+        },
+        {
+            "sandals": {
+                "output": true,
+                "weights": [0.9],
+                "ref": ["samwb"],
+                "p": null
+            }
+        },
+        {
+            "muniform": {
+                "output": true,
+                "weights": [1],
+                "ref": ["vk"],
+                "p": null
+            }
+        }
+    ]
+}
