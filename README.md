@@ -1,37 +1,36 @@
-# README #
+# And/Or Graph
+Application for calculate and-or graphs
 
-### How do I get set up? ###
+## Build with
+* python 3
 
-* You need to install python 3
-* Write your and-or graph structure along with input and output data in graph.json
-* Run and-or.py 
+## Graph structure file declaration
 
-### Graph structure file declaration ###
+### Parts:
+* Input layer ```"input": true```
+* Middle graph layers
+* Output layer ```"output": true```
 
-Structure file conventionally consists of three parts:
-
-* Input data part
-* Intermediate data part
-* Output data part
-
-Data entity template:
-
-
-```
-#!json
+### Template:
+```json
 {
-    "[vertex name]" : {
-        "input": true,
-        "output": false,
-        "weights": ["value"],
-        "ref": ["[ref name] | [ref name 1]&[ref name 2]"],
-        "p": "null | float"
-    }
+    "vertices": [
+        {
+            "[vertexName: string]" : {
+                "input": true,
+                "output": false,
+                "weights": "[array: float]",
+                "ref": ["[refName1: string]", "[refName2: string]&[refName3: string]"],
+                "p": "[probability: float | null]"
+            }
+        }
+    ]
 }
-
 ```
-
-
-### Who do I talk to? ###
-
-petrunin.nikon@outlook.com
+### Template Rules:
+* The value of the "input" key should not be equals to the "output" key (if false, it can be undefined explicitly)
+* The "p" key is required
+* If the "ref" key is defined, the "weights" key is required
+* Weights array length must be equals to references count
+* Reference names are names of the vertices referring this vertex
+* Character "&"  in "ref" key are relation between references (relation between elements of array of the "ref" key is "or")
