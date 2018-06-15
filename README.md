@@ -1,5 +1,5 @@
 # And/Or Graph
-Application for calculate and-or graphs
+Application for calculating and-or graphs
 
 ## Build with
 * python 3
